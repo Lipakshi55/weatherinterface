@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+        integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="box">
+        <div class="wave-one"></div>
+        <div class="wave-two"></div>
+        <div class="wave-three"></div>
+
+        <div id="weathercon">
+            <i class="fa fa-solid fa-sun" style="color:#eccc68"></i>
+        </div>
+        <div class="info">
+            <h2 class="location"><i class="fa fa-solid fa-street-view"></i>Nagpur,In</h2>
+            <p id="date">WED | OCT 23 | 10:49AM</p>
+            <h1 class="temp">26.49°C</h1>
+            <h3 class="tempin_max">Min 26.49°C | Maz 26.49°C</h3>
+        </div>
+    </div>
+    <script>
+
+        const curDate = document.getElementById("date");
+
+        const getCurrentDay = () => {
+            const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            const currentTime = new Date();
+            return weekdays[currentTime.getDay()];
+        };
+
+        const getCurrentTime = () => {
+            const months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            const now = new Date();
+
+            const month = months[now.getMonth()];
+            const date = now.getDate();
+
+            let hours = now.getHours();
+            let mins = now.getMinutes();
+            let period = hours >= 12 ? "PM" : "AM";
+
+            if (hours > 12) {
+                hours -= 12;
+            }
+
+            mins = mins < 10 ? "0" + mins : mins;
+
+            return `${month} ${date} | ${hours}:${mins} ${period}`;
+        };
+
+        curDate.innerHTML = `${getCurrentDay()} | ${getCurrentTime()}`;
+
+    </script>
+
+</body>
+
+</html>
